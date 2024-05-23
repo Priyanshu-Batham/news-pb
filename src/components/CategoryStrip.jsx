@@ -6,32 +6,28 @@ const CategoryStrip = (props) => {
     <>
       <ul className="nav nav-underline justify-content-center">
         <li className="nav-item" onClick={()=>{
-          props.setCategroy('');
-          props.fetchNews();
+          props.setCategory('');
           }}>
           <a className={`nav-link ${props.category===''?'active':''}`} aria-current="page" href="#">
             Top Headlines
           </a>
         </li>
         <li className="nav-item" onClick={()=>{
-          props.setCategroy('sports');
-          props.fetchNews('sports');
+          props.setCategory('sports');
         }}>
           <a className={`nav-link ${props.category==='sports'?'active':''}`} href="#">
             Sports
           </a>
         </li>
         <li className="nav-item" onClick={()=>{
-          props.setCategroy('entertainment');
-          props.fetchNews('entertainment');
+          props.setCategory('entertainment');
         }}>
           <a className={`nav-link ${props.category==='entertainment'?'active':''}`} href="#">
             Entertainment
           </a>
         </li>
         <li className="nav-item" onClick={()=>{
-          props.setCategroy('technology');
-          props.fetchNews('technology');
+          props.setCategory('technology');
         }}>
           <a className={`nav-link ${props.category==='technology'?'active':''}`} href="#">
             Technology
