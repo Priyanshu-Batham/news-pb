@@ -3,8 +3,8 @@ import React from "react";
 const Loader = () => {
   return (
     <>
-      <div class="spinner-border text-info text-center" role="status">
-        <span class="visually-hidden">Loading...</span>
+      <div className="spinner-border text-info text-center mx-auto" role="status">
+        <span className="visually-hidden mx-auto">Loading...</span>
       </div>
     </>
   );

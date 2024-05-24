@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import Loader from "../components/Loader";
 import BigLoader from "../components/BigLoader";
 import defaultImg from '../assets/defaultImg.png'
+import Logo from '../assets/logo.png'
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -51,7 +52,9 @@ const News = () => {
         setCategory={setCategory}
       />
       <div className="container bg-dark text-light">
-        <h1 className="text-center py-5">This is a News Page</h1>
+        <div className="d-flex justify-content-center">
+          <img src={Logo} alt='news-pb'/>
+        </div>
         {isLoading && <BigLoader />}
         {!isLoading && (
           <InfiniteScroll
