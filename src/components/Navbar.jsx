@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from '../assets/logo.png'
 import {Link} from 'react-router-dom'
 
 const Navbar = () => {
@@ -6,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          News PB
+          <img src={Logo} alt="Logo" style={{width: '100px'}}/>
         </Link>
         <button
           className="navbar-toggler"
