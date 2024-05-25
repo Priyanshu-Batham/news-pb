@@ -1,8 +1,5 @@
-# React + Vite
+# News-Pb
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This news application was created by React and Bootstrap. It fetches the news from the newsdata.io API.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The main motive of building this project was to enhance my React skills and grab some strong confidence and comfort while working with such technology.
