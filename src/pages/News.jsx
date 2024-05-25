@@ -59,7 +59,7 @@ const News = () => {
       />
       <div className="container bg-dark text-light">
         <div className="d-flex justify-content-center">
-          <img src={Logo} alt="news-pb" />
+          <img src={Logo} alt="news-pb" style={{width: '60vw'}}/>
         </div>
         {isLoading && <BigLoader />}
         {!isLoading && (
