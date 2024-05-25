@@ -85,7 +85,7 @@ const News = () => {
         {isApiExhausted && (
           <>
             <h2 className="text-center">Sorry, we are out of news for now</h2>
-            <h2 className="text-center pb-5">Come Back Tomorrow :)</h2>
+            <h2 className="text-center pb-5">Check Back Later :)</h2>
           </>
         )}
       </div>
