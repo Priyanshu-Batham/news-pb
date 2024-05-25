@@ -4,9 +4,9 @@ import Banner from "../assets/logo.png";
 
 const Home = () => {
   return (
-    <>
+    <div className=" bg-secondary" style={{height: '93.5vh'}}>
       <div className="container d-flex flex-column align-items-center justify-content-center">
-        <h1 className="mt-5">Welcome To</h1>
+        <h1 className="mt-5 text-light">Welcome To</h1>
         <img src={Banner} alt="News-Pb" width={"100%"} height={"100%"} />
         <button type="button" className="btn btn-info">
           <Link to="/news" style={{textDecoration: 'none', color: 'black'}}>
@@ -14,7 +14,7 @@ const Home = () => {
           </Link>
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

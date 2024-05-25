@@ -3,8 +3,8 @@ import CategoryStrip from "../components/CategoryStrip";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 import BigLoader from "../components/BigLoader";
-import defaultImg from '../assets/defaultImg.png'
-import Logo from '../assets/logo.png'
+import defaultImg from "../assets/defaultImg.png";
+import Logo from "../assets/logo.png";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -14,6 +14,7 @@ const News = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [nextPageId, setNextPageId] = useState(null);
   const [hasMoreData, setHasMoreData] = useState(true);
+  const [isApiExhausted, setIsApiExhausted] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,18 +25,23 @@ const News = () => {
   }, [category]);
 
   async function fetchNews() {
-    const apiKey = `pub_44558e2b48b708b113a3d00c7feec667b4e24`;
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     let url = `https://newsdata.io/api/1/latest?size=8&country=in&language=en&apikey=${apiKey}${
-      category !== "" ? `&category=${category}` : ""}${nextPageId?`&page=${nextPageId}`:''}`;
+      category !== "" ? `&category=${category}` : ""
+    }${nextPageId ? `&page=${nextPageId}` : ""}`;
 
-    // let url = "https://randomuser.me/api/";
     let req = new Request(url);
     let res = await fetch(req);
+    if (res.status === 429) {
+      setIsApiExhausted(true);
+      setHasMoreData(false);
+      return [];
+    }
     let data = await res.json();
-    
-    data.nextPage?setNextPageId(data.nextPage):setHasMoreData(false);
-    
+
+    data.nextPage ? setNextPageId(data.nextPage) : setHasMoreData(false);
+
     return data.results;
   }
 
@@ -45,7 +51,7 @@ const News = () => {
   }
 
   return (
-    <div className="bg-secondary">
+    <div className="bg-secondary" style={{minHeight: '93.5vh'}}>
       <CategoryStrip
         fetchNews={fetchNews}
         category={category}
@@ -53,7 +59,7 @@ const News = () => {
       />
       <div className="container bg-dark text-light">
         <div className="d-flex justify-content-center">
-          <img src={Logo} alt='news-pb'/>
+          <img src={Logo} alt="news-pb" />
         </div>
         {isLoading && <BigLoader />}
         {!isLoading && (
@@ -68,13 +74,19 @@ const News = () => {
               return (
                 <Card
                   key={index}
-                  image_url={data.image_url?data.image_url:defaultImg}
+                  image_url={data.image_url ? data.image_url : defaultImg}
                   title={data.title}
                   link={data.link}
                 />
               );
             })}
           </InfiniteScroll>
+        )}
+        {isApiExhausted && (
+          <>
+            <h2 className="text-center">Sorry, we are out of news for now</h2>
+            <h2 className="text-center pb-5">Come Back Tomorrow :)</h2>
+          </>
         )}
       </div>
     </div>
